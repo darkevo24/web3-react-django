@@ -124,7 +124,7 @@ def user(request):
     try:
         user = models.User.objects.get(id=request.user.id)
     except models.User.DoesNotExist:
-        return response.Response(status_code=404)
+        return response.Response(status=404)
 
     serializer = serializers.UserSerializer(user)
     return response.Response(serializer.data)

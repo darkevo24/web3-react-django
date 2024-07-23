@@ -49,6 +49,7 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    wallet_address = models.CharField(max_length=42, blank=True, null=True)  # Add Ethereum wallet address field
 
     objects = UserManager()
 
@@ -63,6 +64,7 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
     
 class Profile(models.Model):
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
